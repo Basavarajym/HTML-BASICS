@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+<link rel="shortcut icon" href="https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+  <body>
+    <table>
+      <thead>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+      </thead>
+      <tbody id="IndoxLoad"  >
+
+      </tbody>
+    </table>
+  </body>
+  <script type="text/javascript">
+  var InboxData=[{"no":1,"start":0,"imp":1,"fromName":'Basavaraj',"subject":'Build responsive, mobile-first projects on the web with the world’s most popular front-end component library',"Description":'Hi This is Basavaraj Text Mail','DateTime':'12/08/2019 08:00 AM',"readFlag":'unread'},
+                  {"no":2,"start":1,"imp":0,"fromName":'Sachin',"subject":'Bootstrap is an open source toolkit for developing with HTML, CSS, and JS',"Description":'Hi This is Sachin Text Mail','DateTime':'11/08/2019 08:00 AM',"readFlag":'unread'},
+                  {"no":3,"start":0,"imp":0,"fromName":'Guru',"subject":'Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system',"Description":'Hi This is Guru Text Mail','DateTime':'10/08/2019 08:00 AM',"readFlag":'unread'},
+                  {"no":4,"start":1,"imp":1,"fromName":'Iranna',"subject":'extensive prebuilt components, and powerful plugins built on jQuery.',"Description":'Hi This is Iranna Text Mail','DateTime':'09/08/2019 08:00 AM',"readFlag":'unread'},
+                  {"no":5,"start":1,"imp":0,"fromName":'Kiran',"subject":'Include Bootstrap’s source Sass and JavaScript files via npm, Composer or Meteor',"Description":'Hi This is Kiran Text Mail','DateTime':'09/08/2019 08:00 AM',"readFlag":'unread'},
+                {"no":6,"start":0,"imp":0,"fromName":'Santosh',"subject":'Package managed installs don’t include documentation, but do include our build system and readme',"Description":'Hi This is Santosh Text Mail','DateTime':'08/08/2019 08:00 AM',"readFlag":'unread'},
+                {"no":7,"start":0,"imp":1,"fromName":'Hushen',"subject":'When you only need to include Bootstrap’s compiled CSS or JS, you can use BootstrapCDN',"Description":'Hi This is Hushen Text Mail','DateTime':'08/08/2019 08:00 AM',"readFlag":'unread'},
+                {"no":8,"start":0,"imp":0,"fromName":'Pavan',"subject":'Take Bootstrap 4 to the next level with official premium themes—toolkits built on Bootstrap with new components and plugins, docs, and build tools',"Description":'Hi This is Pavan Text Mail','DateTime':'07/08/2019 08:00 AM',"readFlag":'read'},
+                {"no":9,"start":1,"imp":0,"fromName":'Vinayak',"subject":'Get started with Bootstrap, the world’s most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page',"Description":'Hi This is Vinayak Text Mail','DateTime':'06/08/2019 08:00 AM',"readFlag":'unread'},
+              {"no":10,"start":1,"imp":1,"fromName":'Shanthinath',"subject":'Many of our components require the use of JavaScript to function. Specifically, they require jQuery, Popper.js, and our own JavaScript plugins',"Description":'Hi This is Shanthinath Text Mail','DateTime':'05/08/2019 08:00 AM',"readFlag":'read'},
+              {"no":11,"start":0,"imp":0,"fromName":'Manjunath',"subject":'Place the following near the end of your pages, right before the closing tag, to enable them. jQuery must come first, then Popper.js, and then our JavaScript plugins',"Description":'Hi This is Manjunath Text Mail','DateTime':'04/08/2019 08:00 AM',"readFlag":'unread'},
+              {"no":12,"start":0,"imp":1,"fromName":'Gangaraj',"subject":'Curious which components explicitly require jQuery, our JS, and Popper.js? Click the show components link below',"Description":'Hi This is Gangaraj Text Mail','DateTime':'04/08/2019 08:00 AM',"readFlag":'unread'},
+              {"no":13,"start":0,"imp":0,"fromName":'Prakash',"subject":'If you’re at all unsure about the general page structure, keep reading for an example page template',"Description":'Hi This is Prakash Text Mail','DateTime':'03/08/2019 08:00 AM',"readFlag":'read'},
+            {"no":14,"start":1,"imp":0,"fromName":'Vijay',"subject":'Our bootstrap.bundle.js and bootstrap.bundle.min.js include Popper, but not jQuery',"Description":'Hi This is Vijay Text Mail','DateTime':'03/08/2019 08:00 AM',"readFlag":'unread'},
+            {"no":15,"start":1,"imp":1,"fromName":'Rakesh',"subject":'For more information about what’s included in Bootstrap, please see our contents section.',"Description":'Hi This is Rakesh Text Mail','DateTime':'02/08/2019 08:00 AM',"readFlag":'read'},
+            {"no":16,"start":0,"imp":0,"fromName":'Ramesh',"subject":'Be sure to have your pages set up with the latest design and development standards. That means using an HTML5 doctype and including a viewport meta tag for proper responsive behaviors.',"Description":'Hi This is Ramesh Text Mail','DateTime':'01/08/2019 08:00 AM',"readFlag":'read'}
+  ]
+  var indiv=document.getElementById("IndoxLoad");
+  var getLine='';
+  for(var i=0;i<InboxData.length;i++)
+  {
+    getLine=getLine + "<tr class='clsrow"+ InboxData[i]['readFlag'] + "'  onclick='showEmail("+ InboxData[i]['no'] + ")'> <td class='clsleft fa fa-star str"+ InboxData[i]['start'] + "'></td> <td class='clsImp"+ InboxData[i]['imp'] + "'></td> <td class='clsname  col-xs-3 col-md-2''>"+ InboxData[i]['fromName'] + "</td> <td class='clsSubject col-xs-9 col-md-7' >"+ InboxData[i]['subject'] + "</td> <td class='clsDate'>"+ InboxData[i]['DateTime'] + "</td> </tr> "
+  }
+  indiv.innerHTML=getLine;
+
+  function showEmail(indexid)
+  {
+    for(var i=0;i<InboxData.length;i++)
+    {
+      if(InboxData[i]['no']==indexid)
+      {
+        alert(InboxData[i]['Description']);
+      }
+    }
+  }
+  </script>
+  <style>
+    @media (min-width: 200px) {
+  .width-1\/12\@m {
+    grid-column: span 1;
+  }
+}
+.clsrowread
+{
+  padding: 20px 10px 10px 15px;
+  margin: 10px 15px 20px 15px;
+  border-bottom:1px solid grey;
+  background-color:whitesmoke;
+}
+.clsrowunread
+{
+  padding: 20px 10px 10px 15px;
+  margin: 10px 15px 20px 15px;
+  border-bottom:1px solid grey;
+  background-color:white;
+
+}
+.clsleft
+{
+  margin-left:10px;
+}
+.str1{
+color:orange !important;
+
+
+ }
+ .clsImp1
+ {
+   background-image: url(https://www.gstatic.com/images/icons/material/system/1x/label_important_googyellow500_20dp.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: 20px;
+opacity: .7;
+align-items: center;
+border: none;
+display: inline-flex;
+justify-content: center;
+position: relative;
+z-index: 0;
+height: 20px;
+outline: none;
+width: 20px;
+ }
+ .clsImp0
+ {
+background-position: center;
+background-repeat: no-repeat;
+background-size: 20px;
+opacity: .7;
+align-items: center;
+border: none;
+display: inline-flex;
+justify-content: center;
+position: relative;
+z-index: 0;
+height: 20px;
+outline: none;
+width: 20px;
+ }
+ .clsname
+ {
+   padding-right: 32px;
+  height: 20px;
+ }
+
+ .clsSubject
+ {
+padding-left: 0;
+padding-right: 32px;
+height: 20px;
+ }
+ .clsDate{
+//font-size: .75rem;
+flex-basis: 56px;
+justify-content: flex-end;
+padding-left: 0;
+padding-right: 16px;
+ }
+  </style>
+</html>
