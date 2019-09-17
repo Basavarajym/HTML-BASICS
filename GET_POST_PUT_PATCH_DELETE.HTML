@@ -1,0 +1,396 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jquery Example</title>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <style>
+            html {
+                box-sizing: border-box;
+            }
+
+            *, *:before, *:after {
+                box-sizing: inherit;                
+            }
+
+            .column {
+                float: left;
+                width: 33.3%;
+                margin-bottom: 16px;
+                padding: 0 8px;
+            }
+
+            @media screen and (max-width: 700px) {
+                .column {
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+            .card {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+                margin: auto;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .container::after, .row::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            .title {
+                color: grey;
+            }
+            img{
+                border-radius: 50%;
+            }
+            button{
+                margin: 1% 0% 0% 1%;
+                border-radius: 20px;
+                border-style: outset;
+                border-color: crimson;
+            }
+            span{               
+                font-size: xx-large;
+                text-align: center;
+                width: 100%;
+            }
+        </style>
+        <script>
+            $(document).ready(function(){
+
+                function manplute(data)
+                {
+                    var a="<div class='row'>";
+                    for(var i=0;i<=data.length-1;i++){
+                        a=a+ "<div class='column'><div class='card'><img src="+data[i]['avatar']+" alt='John' style='width:100%'> <p class='title'>"+data[i]['first_name']+" "+data[i]['last_name']+" </p> <p>"+data[i]['email']+"</p></div> </div>"
+                    }
+                    a=a+"</div>";
+                    $('#appendrow').append(a)
+                }
+
+                function manpluteSingle(data)
+                {
+                    var a="<div class='row'>";
+
+                    a=a+ "<div class='card'><img src="+data['avatar']+" alt='John' style='width:100%'> <p class='title'>"+data['first_name']+" "+data['last_name']+" </p> <p>"+data['email']+"</p> </div>"
+
+                    a=a+"</div>";
+                    $('#appendrow').append(a)
+                }
+
+                function manpluteGet4(data)
+                {
+                    var a="<div class='row'>";
+                    for(var i=0;i<=data.length-1;i++){
+                        a=a+ "<div class='column' ><div class='card' style='background-color: "+data[i]['color']+";'> <p class='title'>"+data[i]['name']+"  </p> <p>"+data[i]['year']+" </p> <p>"+data[i]['pantone_value']+" </p></div> </div>"
+                    }
+                    a=a+"</div>";
+                    $('#appendrow').append(a)
+                }
+
+                function manpluteGet4Single(data)
+                {
+                    var a="<div class='row'>";
+
+                    a=a+ "<div class='card' style='background-color: "+data['color']+";'> <p class='title'>"+data['name']+"  </p> <p>"+data['year']+" </p> <p>"+data['pantone_value']+" </p></div>"
+
+                    a=a+"</div>";
+                    $('#appendrow').append(a)
+                }
+
+
+                $('#Get1').click(function(){ 
+                    $.ajax({
+                        url: "https://reqres.in/api/users?page=2",
+                        data: '',
+                        method: 'GET',
+                        success: function( data, status ){                            
+                            manplute(data['data'])
+                            console.log(data['data'])
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+                        }
+                    })
+                })
+                $('#Get2').click(function(){ 
+                    $.ajax({
+                        url: "https://reqres.in/api/users/2",
+                        data: '',
+                        method: 'GET',
+                        success: function( data, status ){                            
+                            manpluteSingle(data['data'])
+                            console.log(data['data'])
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+                        }
+                    })
+                })
+                $('#Get3').click(function(){ 
+                    $.ajax({
+                        url: "https://reqres.in/api/users/23",
+                        data: '',
+                        method: 'GET',
+                        success: function( data, status ){                            
+                            manplute(data['data'])
+                            console.log(data['data'])
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+                        }
+                    })
+                })
+                $('#Get4').click(function(){ 
+                    $.ajax({
+                        url: "https://reqres.in/api/unknown",
+                        data: '',
+                        method: 'GET',
+                        success: function( data, status ){                            
+                            manpluteGet4(data['data'])
+                            console.log(data['data'])
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+                        }
+                    })
+                })
+                $('#Get5').click(function(){ 
+                    $.ajax({
+                        url: "https://reqres.in/api/unknown/2",
+                        data: '',
+                        method: 'GET',
+                        success: function( data, status ){                            
+                            manpluteGet4Single(data['data'])
+                            console.log(data['data'])
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+                        }
+                    })
+                })
+                $('#Get6').click(function(){ 
+                    $.ajax({
+                        url: "https://reqres.in/api/unknown/23",
+                        data: '',
+                        method: 'GET',
+                        success: function( data, status ){                            
+                            manpluteGet4(data['data'])
+                            console.log(data['data'])
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+                        }
+                    })
+                })
+                $('#Get7').click(function(){ 
+                    $.ajax({
+                        url: "https://reqres.in/api/users?delay=3",
+                        data: '',
+                        method: 'GET',
+                        success: function( data, status ){                            
+                            manplute(data['data'])
+                            console.log(data['data'])
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+                        }
+                    })
+                })
+
+
+                $('#Post1').click(function(){   
+                    var obj ={
+                        "name": "morpheus",
+                        "job": "leader"
+                    }
+                    $.ajax({
+                        url: "https://reqres.in/api/users",
+                        data: obj,
+                        method: 'POST',
+                        success: function( data, status ){
+                            console.log(data)
+
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+
+                        }
+                    })
+                })
+                $('#Post2').click(function(){   
+                    var obj ={
+                        "email": "eve.holt@reqres.in",
+                        "password": "pistol"
+                    }
+                    $.ajax({
+                        url: "https://reqres.in/api/register",
+                        data: obj,
+                        method: 'POST',
+                        success: function( data, status ){
+                            console.log(data)
+
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+
+                        }
+                    })
+                })
+                $('#Post3').click(function(){   
+                    var obj ={
+                        "email": "sydney@fife"
+                    }
+                    $.ajax({
+                        url: "https://reqres.in/api/register",
+                        data: obj,
+                        method: 'POST',
+                        success: function( data, status ){
+                            console.log(data)
+
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+
+                        }
+                    })
+                })
+                $('#Post4').click(function(){   
+                    var obj ={
+                        "email": "eve.holt@reqres.in",
+                        "password": "cityslicka"
+                    }
+                    $.ajax({
+                        url: "https://reqres.in/api/login",
+                        data: obj,
+                        method: 'POST',
+                        success: function( data, status ){
+                            console.log(data)
+
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+
+                        }
+                    })
+                })
+                $('#Post5').click(function(){   
+                    var obj ={
+                        "email": "peter@klaven"
+                    }
+                    $.ajax({
+                        url: "https://reqres.in/api/login",
+                        data: obj,
+                        method: 'POST',
+                        success: function( data, status ){
+                            console.log(data)
+
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+
+                        }
+                    })
+                })
+
+                $('#Put1').click(function(){   
+                    var obj ={
+                        "name": "morpheus",
+                        "job": "zion resident"
+                    }
+                    $.ajax({
+                        url: "https://reqres.in/api/users/2",
+                        data: obj,
+                        method: 'PUT',
+                        success: function( data, status ){
+                            console.log(data)
+
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+
+                        }
+                    })
+                })
+
+                $('#Patch1').click(function(){   
+                    var obj ={
+                        "name": "morpheus",
+                        "job": "zion resident"
+                    }
+                    $.ajax({
+                        url: "https://reqres.in/api/users/2",
+                        data: obj,
+                        method: 'PATCH',
+                        success: function( data, status ){
+                            console.log(data)
+
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+
+                        }
+                    })
+                })
+
+                $('#Delete1').click(function(){   
+
+                    $.ajax({
+                        url: "https://reqres.in/api/users/2",
+                        data: '',
+                        method: 'PATCH',
+                        success: function( data, status ){
+                            console.log(data)
+
+                        },
+                        error: function( jqXhr, textStatus, errorThrown ){
+
+                        }
+                    })
+                })
+            });
+
+        </script>
+    </head>
+    <body>
+        <div>
+            <span>GET</span>
+            <br/>
+            <button id="Get1">LIST USERS</button>
+            <button id="Get2">SINGLE USER</button>
+            <button id="Get3">SINGLE USER NOT FOUND</button>
+            <button id="Get4"> LIST RESOURCE</button>
+            <button id="Get5"> SINGLE RESOURCE</button>
+            <button id="Get6"> SINGLE RESOURCE NOT FOUND</button>
+            <button id="Get7"> DELAYED RESPONSE</button>
+        </div>
+        <hr>
+        <div>
+            <span>POST</span>
+            <br/>
+            <button id="Post1">CREATE</button>
+            <button id="Post2">REGISTER - SUCCESSFUL</button>
+            <button id="Post3">REGISTER - UNSUCCESSFUL</button>
+            <button id="Post4">LOGIN - SUCCESSFUL</button>
+            <button id="Post5">LOGIN - UNSUCCESSFUL</button>
+        </div>
+        <hr>
+        <div>
+            <span>PUT</span>
+            <br/>
+            <button id="Put1">UPDATE</button>            
+        </div>
+        <hr>
+        <div>
+            <span>PATCH</span>
+            <br/>
+            <button id="Patch1">UPDATE</button>            
+        </div>
+        <hr>
+        <div>
+            <span>Delete</span>
+            <br/>
+            <button id="Delete1">DELETE</button>            
+        </div>
+        <br/>
+        <table>           
+            <tbody id="appendrow">
+            </tbody>
+        </table>
+    </body>
+</html>
